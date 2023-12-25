@@ -1819,7 +1819,8 @@ input, select, textarea {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-bottom: 20px; /* Adjust as needed */
+		margin-bottom: 0px; 
+		margin-top: 20px;
 	}
 
 	input[type="range"] {
