@@ -27,6 +27,18 @@
 						<li><a href="#two">Things I Can Do</a></li>
 						<li><a href="#three">Projects</a></li>
 						<li><a href="#four">Contact</a></li>
+						<li>
+							<audio id="myAudio" autoplay>
+								<source src="assets/Noisestorm-Dawn.mp3" type="audio/mp3">
+								Your browser does not support the audio element.
+							  </audio>
+							  
+							  <div class="volume-slider-container">
+								<span class="feature-icons"><i class="icon solid fa-volume-mute"></i></span>
+							 	<input type="range" min="0" max="1" step="0.1" value="1" id="volumeControl">
+								<span class="feature-icons"><i class="icon solid fa-volume-up"></i></span>
+							  </div>
+						</li>
 					</ul>
 				</nav>
 				<footer>
@@ -463,7 +475,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						<div class="container">
 							<ul class="copyright">
 								<img src="images/popsicle2.gif" alt="Animated Gif" style="width:250px;height:250px;">
-								<p><a>© Kevin Tran 2023. All rights reserved.</a></p>
+								<p>
+									<a>© Kevin Tran 2023. All rights reserved.<br>
+									<br>© Noisestorm. All music rights belong to Noisestorm.
+									</a>
+								</p>
 							</ul>
 						</div>
 					</section>
@@ -478,6 +494,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const audio = document.getElementById('myAudio');
+					const volumeControl = document.getElementById('volumeControl');
+					
+					// Set the initial volume to 50% for both the audio and the range input
+					const initialVolume = 0.3;
+					audio.volume = initialVolume;
+					volumeControl.value = initialVolume;
+			
+					volumeControl.addEventListener('input', function() {
+						audio.volume = parseFloat(this.value);
+					});
+				});
+			</script>
 
 	</body>
 </html>

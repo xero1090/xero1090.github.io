@@ -1815,6 +1815,34 @@ input, select, textarea {
 		padding: 0;
 	}
 
+	.volume-slider-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20px; /* Adjust as needed */
+	}
+
+	input[type="range"] {
+		-webkit-appearance: none;
+		-moz-appearence: none;
+		appearance: none;
+		width: 60%; /* Width of the slider */
+		height: 25px; /* Height of the slider */
+		border-radius: 5px;
+		background: #ffffff; /* Track color */
+		outline: none;
+	  }
+
+	  input[type="range"]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px; /* Width of the thumb */
+		height: 25px; /* Height of the thumb */
+		border-radius: 50%; /* Rounded shape */
+		background:url('/images/popthumb2.png') no-repeat center center; /* Thumb color */
+		cursor: pointer;
+	  }
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
