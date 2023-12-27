@@ -74,6 +74,35 @@ input, select, textarea {
 
 /* Basic */
 
+	/* Scroll bar */
+
+    /* Styling the scrollbar track (the part the thumb moves along) */
+    ::-webkit-scrollbar-track {
+        background: transparent; /* Makes the track invisible */
+    }
+
+    /* Styling the scrollbar thumb (the draggable part) */
+    ::-webkit-scrollbar-thumb {
+        background: #4acaa8; /* Color of the thumb */
+        border-radius: 10px;
+    }
+
+    /* Styling the scrollbar thumb on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Color of the thumb when hovered or clicked */
+    }
+
+    /* Setting the width of the scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+    }
+
+    /* For Firefox */
+    html {
+        scrollbar-width: thin; /* "auto" or "thin" */
+        scrollbar-color: #888 transparent; /* thumb and track color */
+    }
+
 	html {
 		box-sizing: border-box;
 	}
@@ -3332,6 +3361,8 @@ input, select, textarea {
 				display: block;
 				width: 100%;
 			}
+
+	
 
 		/* Button */
 
