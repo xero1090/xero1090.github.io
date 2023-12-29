@@ -496,41 +496,57 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-			document.addEventListener('DOMContentLoaded', function() {
-    			const audio = document.getElementById('myAudio');
-				const volumeControl = document.getElementById('volumeControl');
-				const playButton = document.getElementById('playButton');
-
-				// Set initial volume to 30% for both audio and range input
-				const initialVolume = 0.3;
-				audio.volume = initialVolume;
-				volumeControl.value = initialVolume;
-
-				// Event listener for the play button
-				playButton.addEventListener('click', function() {
-					if (audio.paused) {
-						audio.play();
-						//playButton.textContent = 'Pause';
-					} else {
-						audio.pause();
-						//playButton.textContent = 'Play';
-					}
-				});
-
-				// Event listener for the volume control
-				volumeControl.addEventListener('input', function() {
-					audio.volume = parseFloat(this.value);
-				});
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			  const audio = document.getElementById('myAudio');
+			  const volumeControl = document.getElementById('volumeControl');
+			  const playButton = document.getElementById('playButton');
+			  const playIcon = document.querySelector('#playButton i');
+		  
+			  // Set initial volume to 30% for both audio and range input
+			  const initialVolume = 0.3;
+			  audio.volume = initialVolume;
+			  volumeControl.value = initialVolume;
+		  
+			  // Function to update the play/pause button icon
+			  function updatePlayButtonIcon() {
+				if (audio.paused) {
+				  playIcon.classList.remove('fa-pause');
+				  playIcon.classList.add('fa-play');
+				} else {
+				  playIcon.classList.remove('fa-play');
+				  playIcon.classList.add('fa-pause');
+				}
+			  }
+		  
+			  // Event listener for the play button
+			  playButton.addEventListener('click', function () {
+				if (audio.paused) {
+				  audio.play();
+				} else {
+				  audio.pause();
+				}
+				updatePlayButtonIcon();
+			  });
+		  
+			  // Event listener for the volume control
+			  volumeControl.addEventListener('input', function () {
+				audio.volume = parseFloat(this.value);
+			  });
+		  
+			  // Update the play/pause button icon when the audio state changes
+			  audio.addEventListener('play', function () {
+				updatePlayButtonIcon();
+			  });
+		  
+			  audio.addEventListener('pause', function () {
+				updatePlayButtonIcon();
+			  });
+			  
+			  // Update the play/pause button icon initially based on audio state
+			  updatePlayButtonIcon();
 			});
-			</script>
+		  </script>
 
 	</body>
 </html>
