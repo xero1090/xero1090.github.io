@@ -19,7 +19,7 @@
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="#one" class="active">About</a></li>
+						<li><a href="#one">About</a></li>
 						<li><a href="#two">Things I Can Do</a></li>
 						<li><a href="#three">Projects</a></li>
 						<li><a href="#four">Contact</a></li>
@@ -115,7 +115,7 @@
 											</div>
 										</article>
 										<article>
-											<a href="https://github.com/xero1090/EcoScrapeAPI" class="image"><img src="images/EcoScrapeAPI.gif" alt=""  /></a>
+											<a href="https://github.com/xero1090/EcoScrapeAPI" class="image"><img src="images/EcoScrapeAPI.png" alt=""  /></a>
 											<div class="inner">
 												<h4>EcoScrapeAPI</h4>
 												<p>My first web scraping project that scrapes from popular news sources and displays the news source and article header. It uses the RapidAPI platform, and Heroku for deployment.</p>
@@ -502,7 +502,52 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			  const volumeControl = document.getElementById('volumeControl');
 			  const playButton = document.getElementById('playButton');
 			  const playIcon = document.querySelector('#playButton i');
+			  const sections = document.querySelectorAll("section[id]");
+    		  const navLinks = document.querySelectorAll("#nav ul li a");
 		  
+			  function changeLinkState() {
+				let index = sections.length;
+				const middleOfScreen = (window.scrollY + window.innerHeight) / 2;
+
+				while (--index && middleOfScreen < sections[index].offsetTop) {}
+
+				navLinks.forEach(link => link.classList.remove("active"));
+				navLinks[index].classList.add("active");
+			}
+
+			window.addEventListener("scroll", changeLinkState);
+			changeLinkState();
+
+			navLinks.forEach(link => {
+			link.addEventListener("click", function (e) {
+			e.preventDefault();
+			const targetId = this.getAttribute("href").substring(1);
+			const targetSection = document.getElementById(targetId);
+
+			if (targetSection) {
+				window.scrollTo({
+				top: targetSection.offsetTop,
+				behavior: "smooth"
+				});
+			}
+			});
+		});
+
+		function highlightActiveLink() {
+			const fromTop = window.scrollY + 50;
+			navLinks.forEach(link => {
+				const section = document.getElementById(link.getAttribute("href").substring(1));
+				if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+					link.classList.add("active");
+				} else {
+					link.classList.remove("active");
+				}
+			});
+		}
+
+    		window.addEventListener("scroll", highlightActiveLink);
+
+
 			  // Set initial volume to 30% for both audio and range input
 			  const initialVolume = 0.3;
 			  audio.volume = initialVolume;
