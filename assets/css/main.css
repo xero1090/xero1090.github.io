@@ -2761,7 +2761,7 @@ input, select, textarea {
 		background: #4acaa8;
 		color: #d2f2e9;
 		height: 100%;
-		overflow-y: auto;
+		overflow-y: hidden;
 		position: fixed;
 		text-align: center;
 		top: 0;
